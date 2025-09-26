@@ -1,0 +1,31 @@
+package emailvalidator;
+
+import java.util.Scanner;
+import java.util.regex.*;
+
+public class GmailValidator {
+    // Regex for Gmail only (supports .com, .in, etc.)
+    private static final String GMAIL_REGEX = "^[A-Za-z0-9+_.-]+@gmail\\.[A-Za-z]{2,6}$";
+
+    public static boolean isValidGmail(String email) {
+        Pattern pattern = Pattern.compile(GMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter your email: ");
+        String email = sc.nextLine();
+
+        if (isValidGmail(email)) {
+            System.out.println("Valid Gmail");
+        } else {
+            System.out.println("Invalid Gmail");
+        }
+
+        sc.close();
+    }
+}
+
